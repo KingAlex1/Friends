@@ -1,0 +1,173 @@
+/* Please do not use this import in production. You could download this font from here https://fontstorage.com/font/roboto */
+@import "http://fonts.fontstorage.com/import/roboto.css";
+/* Please do not use this import in production. You could download this font from here https://fontstorage.com/font/beermoney */
+
+/*
+	Roboto, 100, 100 italic, 300, 300 italic, 400, 400 italic, 500, 500 italic, 700, 700 italic, 900, 900 italic
+*/
+
+/* Please do not use this import in production. You could download this font from here https://fontstorage.com/font/marckscript */
+@import "http://fonts.fontstorage.com/import/marckscript.css";
+/*
+	Marck Script, 400
+*/
+
+
+.section__app{
+  width: 100vw;
+  height: 100vh;
+  font-family: Roboto ;
+  background-color: #999999;
+}
+.app__header{
+  display: flex;
+  justify-content: center;
+}
+.app__header-text{
+  text-align: center;
+  padding: 0.2rem;
+  margin: 1rem;
+  color: #996141;
+  font-family: Marck Script;
+  font-weight: 700;
+  font-size: 1rem;
+  border-bottom: solid;
+  width: 25%;
+}
+
+.app{
+  width: 55%;
+  position: relative;
+  display: block;
+  margin: auto;
+}
+
+.app__title{
+
+  background-color: #ff8663 ;
+  display: flex;
+  align-items: center;
+  border-radius: 8px 8px 0 0;
+}
+
+.app__title-text{
+  padding: 0.6rem;
+  font-weight: 400;
+  color: white;
+  font-size: 1rem;
+}
+
+.app__search{
+  display: flex;
+  background-color: #f0f0f0;
+  justify-content: center;
+}
+
+.app__search_text{
+  text-align: center;
+  margin: 7px 10px 9px 10px;
+  width: 45%;
+  color: #dfdfdf;
+  border-radius: 13px;
+  border: none;
+  height: 18px;
+  font-size: 10px;
+
+}
+
+#textFirst{
+  background-image: url(img/fl.png) ;
+  background-repeat: no-repeat;
+  background-position: 4px;
+  text-decoration: none;
+}
+.app__choose{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex: auto;
+  height: 50vh;
+  background-color: #ffffff;
+
+}
+
+.app__choose_column{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  overflow: auto;
+  overflow-style: panner;
+  overflow-x:hidden;
+}
+
+
+
+.app__choose_title{
+
+  position: relative;
+  height: 30px;
+  padding: 5px ;
+  font-size: 8px;
+  color: #4f4f4f;
+  font-weight: 600;
+  margin: 12px 15px 7px 15px;
+  border-bottom: solid;
+  border-bottom-color:#f0f0f0 ;
+  border-bottom-width: thin;
+}
+
+.app__bottom{
+  display: flex;
+  justify-content: flex-end;
+  background-color:#f0f0f0 ;
+  border-radius: 0 0 8px 8px;
+
+}
+
+.app__button_save{
+  border: none;
+  background-color:#ff8663 ;
+  border-radius: 8px;
+  color: #f0f0f0;
+  font-size: 10px;
+  padding: 4px;
+  margin: 4px;
+}
+
+.app__choose_point:hover{
+
+background-color:#f0f0f0 ;
+}
+.app__choose_result{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.app__choose_names{
+  display: flex;
+  font-size: 8px;
+  font-family: Roboto;
+  align-items: center;
+}
+
+.app__choose_img{
+  display: flex;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  padding: 5px 15px 5px 15px;
+}
+.app__choose_users{
+
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  border-bottom: solid;
+  border-color:#f0f0f0 ;
+  border-bottom-width: thin;
+
+
+}
+
+
