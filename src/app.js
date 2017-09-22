@@ -5,18 +5,15 @@ function api(method,params) {
                 reject(new Error(data.error.error_msg));
             }else {
                 resolve(data.response);
-
             }
         });
     })
-
 }
 
 const promise = new Promise((resolve, reject) =>{
     VK.init({
         apiId:6191526
         });
-
     VK.Auth.login(data=>{
         if(data.session){
             resolve(data);
@@ -32,8 +29,6 @@ promise
     })
     .then(data =>{
         const [user] = data;
-    //    headerInfo.innerText = `${user.first_name} ${user.last_name}`;
-
         return api ('friends.get',{v:5.68,fields:'first_name, last_name, photo_100 , id'})
     })
     .then(data=>{
@@ -44,45 +39,14 @@ promise
         return results.innerHTML = template;
 
     })
-   /* .then(()=>{
-        var cols = document.querySelectorAll('.draggable-div');
-        [].forEach.call(cols, function(col) {
-            col.addEventListener('dragstart', handleDragStart, false);
-            col.addEventListener('dragover', handleDragOver, false);
-            col.addEventListener('drop', handleDrop, false);
-        });
-    })
-*/
-   /*.then(()=>{
-    function dragDrop(ev) {
-    var data = ev.dataTransfer.getData("Text");
-    var enemNode = document.querySelectorAll(' draggable-div');
-    var elem = document.querySelector('.draggable-div');
-
-    this.addEventListener('mouseup',function (e) {
-    if( e.target !== enemNode ){
-    ev.stopPropagation();
-    }
-    ev.target.appendChild(document.getElementById(data));
-    })
-
-
-
-    return false;
-    }
-    })*/
-
-
     .catch(function (e) {
         alert('Ошибка:' + e.message);
 
     });
 
-////////////////////////////////////////
-////////////////////////////////////////
+
 ////////////draganddrop/////////////////
-////////////////////////////////////////
-////////////////////////////////////////
+
 function dragStart(ev) {
     ev.dataTransfer.effectAllowed='move';
     ev.dataTransfer.setData("Text", ev.target.getAttribute('id'));
@@ -106,13 +70,39 @@ function dragDrop(ev) {
 function dragDropBack (ev) {
     var data = ev.dataTransfer.getData("Text");
     var elemResult = document.querySelector('.app__choose_result');
-
     if(ev.target.classList.contains("app__choose_users")){
-        elemResult.appendChild(document.getElementById(data))
-            }
+        elemResult.appendChild(document.getElementById(data));
 
-
+    }
     elemResult.appendChild(document.getElementById(data));
     ev.stopPropagation();
     return true;
 }
+//// нажимаем на плюсик и переносим в левую часть и наоборот , плюс меняем плюсик на крестик.
+
+
+document.body.addEventListener("mousedown", function(e) {
+    var toRight = document.querySelector('.app__choose_friend-list');
+    var toLeft = document.querySelector('.app__choose_result');
+    if (1 == e.which) {
+
+        if (e.target.classList.contains('glyphicon-plus')) {
+            e.target.classList.remove('glyphicon-plus');
+            e.target.classList.add('glyphicon-remove');
+            var current = e.target.parentNode.parentNode ;
+            toRight.appendChild(current);
+
+        }else if (e.target.classList.contains('glyphicon-remove')) {
+            e.target.classList.remove('glyphicon-remove');
+            e.target.classList.add('glyphicon-plus');
+            var current = e.target.parentNode.parentNode ;
+            toLeft.appendChild(current);
+        }
+
+
+    }
+});
+
+
+
+

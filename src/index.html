@@ -24,17 +24,18 @@
             </div>
             <div class="app__choose">
 
-                <div class="app__choose_column">
+                <div class="app__choose_column ">
                     <div class="app__choose_title">Ваши друзья</div>
                     <!--<h1 id="headerInfo"></h1> -->
 
-                    <div id="results"
+                    <div class="app_result" id="results"
                          draggable="true"
                          ondragenter="return dragEnter(event)"
                          ondrop="return dragDropBack(event)"
-                         ondragover="return dragOver(event)"
+                         ondragover="return dragOver(event)">
 
-                    ></div>
+
+                    </div>
                     <script id="user-template" type="text/x-handlebars-template">
                         <div id="dnd" class ="app__choose_result">
                             {{#each list}}
@@ -43,8 +44,13 @@
                                      ondragstart="return dragStart(event)">
                                     <img draggable="false" class="app__choose_img" src="{{photo_100}}"/>
                                     <div class="app__choose_names">{{first_name}} {{last_name}}</div>
+                                    <div class="plus">
+                                        <span class="glyphicon-plus" ></span>
+                                    </div>
+
 
                                 </div>
+
                             {{/each}}
 
                         </div>

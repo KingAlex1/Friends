@@ -146,8 +146,10 @@ background-color:#f0f0f0 ;
 .app__choose_names{
   display: flex;
   font-size: 8px;
+  flex: 2;
   font-family: Roboto;
   align-items: center;
+  color:  rgba(161, 161, 161 , 1);
 }
 
 .app__choose_img{
@@ -169,7 +171,7 @@ background-color:#f0f0f0 ;
   border-bottom: solid;
   border-color:#f0f0f0 ;
   border-bottom-width: thin;
-  cursor: move;
+
 
 }
 .app__choose_friend-list{
@@ -181,3 +183,31 @@ background-color:#f0f0f0 ;
   border: 2px dashed #000;
 }
 
+.app_result{
+  height: 100%;
+  width: 100%;
+}
+
+.plus{
+  display: flex;
+  align-items: center;
+  width: auto;
+
+
+}
+.app__choose_users span{
+  display: flex;
+  height: 20px;
+  font-size: 20px;
+  margin-right: 10px;
+  justify-content: flex-end;
+  color: rgba(161, 161, 161, 0.9);
+}
+
+.glyphicon-plus:before {
+  content: "\002b";
+
+}
+.glyphicon-remove:before {
+  content: "\e014";
+}
