@@ -6,11 +6,9 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
     <script src="http://vk.com/js/api/openapi.js"  type="text/javascript"></script>
-
 </head>
 <body>
     <div class="section__app">
-
         <div class="app">
             <div class="app__header">
                 <div class="app__header-text">Другофильтр...</div>
@@ -23,18 +21,14 @@
                 <input id="textSecond" type="text" value=" Название" class="app__search_text ">
             </div>
             <div class="app__choose">
-
                 <div class="app__choose_column ">
                     <div class="app__choose_title">Ваши друзья</div>
                     <!--<h1 id="headerInfo"></h1> -->
-
                     <div class="app_result" id="results"
                          draggable="true"
                          ondragenter="return dragEnter(event)"
                          ondrop="return dragDropBack(event)"
                          ondragover="return dragOver(event)">
-
-
                     </div>
                     <script id="user-template" type="text/x-handlebars-template">
                         <div id="dnd" class ="app__choose_result">
@@ -47,39 +41,26 @@
                                     <div class="plus">
                                         <span class="glyphicon-plus" ></span>
                                     </div>
-
-
                                 </div>
-
                             {{/each}}
-
                         </div>
                     </script>
-
                 </div>
                 <div class="app__choose_column">
                     <div class="app__choose_title">Друзья в списке</div>
                     <div id="big" class= "app__choose_friend-list "
                          draggable="true"
-
                          ondragenter="return dragEnter(event)"
                          ondrop="return dragDrop(event)"
                          ondragover="return dragOver(event)">
-
                     </div>
-
                 </div>
-
             </div>
             <div class="app__bottom">
                 <button class="app__button_save" id="button_save"> Сохранить </button>
             </div>
         </div>
     </div>
-
-
-
 <script src="app.js"></script>
-
 </body>
 </html>

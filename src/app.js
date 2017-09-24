@@ -115,13 +115,16 @@ textSecond.addEventListener('click', function () {
     textSecond.value = "";
 });
 
-function search(full, chunk) {
-    var look = "";
-    look = full.value.toLowerCase();
-    for (var i = 0; i < chunk.length; i++) {
-        if (look === chunk[i].querySelector(".app__choose_names").innerText.toLowerCase().slice(0, look.length)) {
-            chunk[i].style.display = "flex";
-        } else  chunk[i].style.display = "none"
+function search(inVal, desk) {
+    var look = inVal.value.toLowerCase();
+    for (var i = 0; i < desk.length; i++) {
+        if (look === desk[i].querySelector(".app__choose_names").innerText.toLowerCase().slice(0, look.length)){
+            desk[i].style.display = "flex";
+        }
+        else if (look === desk[i].querySelector(".app__choose_names").innerText.toLowerCase().split(" ").reverse().join("").slice(0, look.length)){
+            desk[i].style.display = "flex";
+        }
+        else desk[i].style.display = "none"
     }
 }
 
