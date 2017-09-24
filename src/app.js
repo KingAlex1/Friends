@@ -1,56 +1,54 @@
-function api(method,params) {
-    return new Promise((resolve , reject) =>{
-        VK.api(method,params,data=>{
-            if(data.error){
+function api(method, params) {
+    return new Promise((resolve, reject) => {
+        VK.api(method, params, data => {
+            if (data.error) {
                 reject(new Error(data.error.error_msg));
-            }else {
+            } else {
                 resolve(data.response);
             }
         });
     })
 }
 
-const promise = new Promise((resolve, reject) =>{
+const promise = new Promise((resolve, reject) => {
     VK.init({
-        apiId:6191526
-        });
-    VK.Auth.login(data=>{
-        if(data.session){
+        apiId: 6191526
+    });
+    VK.Auth.login(data => {
+        if (data.session) {
             resolve(data);
-        }else {
+        } else {
             reject(new Error('Не удалось авторизоваться'))
         }
-    },8);
+    }, 8);
 });
 
 promise
-    .then(()=>{
-        return api('users.get',{v: 5.68, name_case:'gen'});
+    .then(() => {
+        return api('users.get', {v: 5.68, name_case: 'gen'});
     })
-    .then(data =>{
+    .then(data => {
         const [user] = data;
-        return api ('friends.get',{v:5.68,fields:'first_name, last_name, photo_100 , id'})
+        return api('friends.get', {v: 5.68, fields: 'first_name, last_name, photo_100 , id'})
     })
-    .then(data=>{
+    .then(data => {
         const templateElement = document.querySelector('#user-template');
         const source = templateElement.innerHTML,
             templateFn = Handlebars.compile(source),
             template = templateFn({list: data.items});
         return results.innerHTML = template;
-
     })
     .catch(function (e) {
         alert('Ошибка:' + e.message);
 
     });
 
-
 ////////////draganddrop/////////////////
 
 function dragStart(ev) {
-    ev.dataTransfer.effectAllowed='move';
+    ev.dataTransfer.effectAllowed = 'move';
     ev.dataTransfer.setData("Text", ev.target.getAttribute('id'));
-    ev.dataTransfer.setDragImage(ev.target,150,30);
+    ev.dataTransfer.setDragImage(ev.target, 150, 30);
     return true;
 }
 function dragEnter(ev) {
@@ -67,10 +65,10 @@ function dragDrop(ev) {
     ev.stopPropagation();
     return false;
 }
-function dragDropBack (ev) {
+function dragDropBack(ev) {
     var data = ev.dataTransfer.getData("Text");
     var elemResult = document.querySelector('.app__choose_result');
-    if(ev.target.classList.contains("app__choose_users")){
+    if (ev.target.classList.contains("app__choose_users")) {
         elemResult.appendChild(document.getElementById(data));
 
     }
@@ -81,7 +79,7 @@ function dragDropBack (ev) {
 //// нажимаем на плюсик и переносим в левую часть и наоборот , плюс меняем плюсик на крестик.
 
 
-document.body.addEventListener("mousedown", function(e) {
+document.body.addEventListener("mousedown", function (e) {
     var toRight = document.querySelector('.app__choose_friend-list');
     var toLeft = document.querySelector('.app__choose_result');
     if (1 == e.which) {
@@ -89,13 +87,13 @@ document.body.addEventListener("mousedown", function(e) {
         if (e.target.classList.contains('glyphicon-plus')) {
             e.target.classList.remove('glyphicon-plus');
             e.target.classList.add('glyphicon-remove');
-            var current = e.target.parentNode.parentNode ;
+            var current = e.target.parentNode.parentNode;
             toRight.appendChild(current);
 
-        }else if (e.target.classList.contains('glyphicon-remove')) {
+        } else if (e.target.classList.contains('glyphicon-remove')) {
             e.target.classList.remove('glyphicon-remove');
             e.target.classList.add('glyphicon-plus');
-            var current = e.target.parentNode.parentNode ;
+            var current = e.target.parentNode.parentNode;
             toLeft.appendChild(current);
         }
 
@@ -103,6 +101,39 @@ document.body.addEventListener("mousedown", function(e) {
     }
 });
 
+//////// Выбор Друга из списка  .
+
+var textFirst = document.querySelector('#textFirst');
+var textSecond = document.querySelector('#textSecond');
+
+
+textFirst.addEventListener('click', function () {
+    textFirst.value = "";
+});
+
+textSecond.addEventListener('click', function () {
+    textSecond.value = "";
+});
+
+function search(full, chunk) {
+    var look = "";
+    look = full.value.toLowerCase();
+    for (var i = 0; i < chunk.length; i++) {
+        if (look === chunk[i].querySelector(".app__choose_names").innerText.toLowerCase().slice(0, look.length)) {
+            chunk[i].style.display = "flex";
+        } else  chunk[i].style.display = "none"
+    }
+}
+
+textFirst.addEventListener('input', function () {
+    var deskLeft = document.querySelectorAll('#dnd .app__choose_users');
+    search(textFirst, deskLeft);
+});
+
+textSecond.addEventListener('input', function () {
+    var deskRight = document.querySelectorAll('#big .app__choose_users');
+    search(textSecond, deskRight);
+});
 
 
 
