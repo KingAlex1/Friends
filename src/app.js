@@ -63,6 +63,10 @@ function dragDrop(ev) {
     var elem = document.querySelector('.app__choose_friend-list');
     elem.appendChild(document.getElementById(data));
     ev.stopPropagation();
+    var idData = document.getElementById(data);
+    var dataDel = idData.querySelector('span');
+    dataDel.classList.remove('glyphicon-plus');
+    dataDel.classList.add('glyphicon-remove');
     return false;
 }
 function dragDropBack(ev) {
@@ -70,11 +74,15 @@ function dragDropBack(ev) {
     var elemResult = document.querySelector('.app__choose_result');
     if (ev.target.classList.contains("app__choose_users")) {
         elemResult.appendChild(document.getElementById(data));
-
     }
     elemResult.appendChild(document.getElementById(data));
     ev.stopPropagation();
+    var idData = document.getElementById(data);
+    var dataDel = idData.querySelector('span');
+    dataDel.classList.remove('glyphicon-remove');
+    dataDel.classList.add('glyphicon-plus');
     return true;
+
 }
 //// нажимаем на плюсик и переносим в левую часть и наоборот , плюс меняем плюсик на крестик.
 
@@ -137,6 +145,11 @@ textSecond.addEventListener('input', function () {
     var deskRight = document.querySelectorAll('#big .app__choose_users');
     search(textSecond, deskRight);
 });
+var save = document.querySelector("#button_save");
+save.addEventListener("click", function() {
+    var storage = document.querySelector(".app__choose").innerHTML;
+    localStorage.storage = storage ;
+});
 
 
-
+document.querySelector(".app__choose").innerHTML = localStorage.storage ;

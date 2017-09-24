@@ -133,6 +133,10 @@
   margin: 4px;
 }
 
+.app__button_save:hover{
+  background-color: #ff006f;
+}
+
 .app__choose_point:hover{
 
 background-color:#f0f0f0 ;
