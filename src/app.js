@@ -9,7 +9,6 @@ function api(method, params) {
         });
     })
 }
-
 const promise = new Promise((resolve, reject) => {
     VK.init({
         apiId: 6191526
@@ -22,7 +21,6 @@ const promise = new Promise((resolve, reject) => {
         }
     }, 8);
 });
-
 promise
     .then(() => {
         return api('users.get', {v: 5.68, name_case: 'gen'});
@@ -38,12 +36,30 @@ promise
             template = templateFn({list: data.items});
         return results.innerHTML = template;
     })
+    .then(()=>{
+
+            if (localStorage.storage) {
+                document.querySelector(".app__choose").innerHTML = localStorage.storage;
+
+            }
+
+
+    })
     .catch(function (e) {
         alert('Ошибка:' + e.message);
-
     });
 
 ////////////draganddrop/////////////////
+
+
+window.addEventListener('load',function () {
+
+    if (localStorage.storage) {
+        document.querySelector(".app__choose").innerHTML = localStorage.storage;
+
+    }
+});
+
 
 function dragStart(ev) {
     ev.dataTransfer.effectAllowed = 'move';
@@ -67,6 +83,7 @@ function dragDrop(ev) {
     var dataDel = idData.querySelector('span');
     dataDel.classList.remove('glyphicon-plus');
     dataDel.classList.add('glyphicon-remove');
+    textSecond.value="";
     return false;
 }
 function dragDropBack(ev) {
@@ -81,6 +98,7 @@ function dragDropBack(ev) {
     var dataDel = idData.querySelector('span');
     dataDel.classList.remove('glyphicon-remove');
     dataDel.classList.add('glyphicon-plus');
+    textFirst.value = "" ;
     return true;
 
 }
@@ -97,6 +115,7 @@ document.body.addEventListener("mousedown", function (e) {
             e.target.classList.add('glyphicon-remove');
             var current = e.target.parentNode.parentNode;
             toRight.appendChild(current);
+
 
         } else if (e.target.classList.contains('glyphicon-remove')) {
             e.target.classList.remove('glyphicon-remove');
@@ -147,9 +166,9 @@ textSecond.addEventListener('input', function () {
 });
 var save = document.querySelector("#button_save");
 save.addEventListener("click", function() {
+
     var storage = document.querySelector(".app__choose").innerHTML;
     localStorage.storage = storage ;
 });
 
 
-document.querySelector(".app__choose").innerHTML = localStorage.storage ;
