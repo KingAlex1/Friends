@@ -1,3 +1,5 @@
+import './style.css';
+
 function api(method, params) {
     return new Promise((resolve, reject) => {
         VK.api(method, params, data => {
